@@ -58,7 +58,7 @@ public class NotaRestController {
         return responseEntity;
     }
 
-    @RequestMapping(value = "rest/updateNota", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(value = "rest/updateNota", method = RequestMethod.PUT, produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
     public ResponseEntity<NotaDTO> updateNota(@RequestBody NotaDTO dto){
 

@@ -14,21 +14,21 @@ public class NotaService {
 
     @Autowired
     NotaRepository notaRepository;
-    private List<NotaDTO> notaListDTO = new ArrayList<>();
-    private List<Nota> notaListEntity = new ArrayList<>();
+
 
     public  List<NotaDTO> findAlNote(){
-        this.notaListEntity = notaRepository.findAll();
+        List<Nota> notaListEntity = notaRepository.findAll();
 
+        List<NotaDTO> notaListDTO = new ArrayList<>();
         for (Nota nota : notaListEntity) {
 
             NotaDTO notaDTO = new NotaDTO();
             notaDTO.setId(nota.getId());
             notaDTO.setTitle(nota.getDescription());
             notaDTO.setDescription(nota.getDescription());
-            this.notaListDTO.add(notaDTO);
+            notaListDTO.add(notaDTO);
         }
-        return this.notaListDTO;
+        return notaListDTO;
     }
 
     public NotaDTO addNota( NotaDTO dto){
@@ -58,11 +58,10 @@ public class NotaService {
     }
 
     public NotaDTO updateNota( NotaDTO dto){
-        Nota entity = new Nota();
-        entity.setId( dto.getId() );
-        entity.setTitle( dto.getTitle() );
-        entity.setDescription( dto.getDescription() );
+        Nota entity = notaRepository.findOne(dto.getId());
 
+        entity.setTitle(dto.getTitle());
+        entity.setDescription(dto.getDescription());
         try {
             notaRepository.flush();
         } catch (Exception e) {
@@ -82,10 +81,7 @@ public class NotaService {
 
     public void deleteNota(NotaDTO dto){
 
-        Nota entity = new Nota();
-        entity.setId( dto.getId() );
-        entity.setTitle( dto.getTitle() );
-        entity.setDescription( dto.getDescription() );
+        Nota entity = notaRepository.findOne(dto.getId());
 
         try {
             notaRepository.delete(entity);

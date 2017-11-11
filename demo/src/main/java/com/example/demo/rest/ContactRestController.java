@@ -55,7 +55,7 @@ public class ContactRestController {
         return responseEntity;
     }
 
-    @RequestMapping(value = "rest/updateContact", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(value = "rest/updateContact", method = RequestMethod.PUT, produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
     public ResponseEntity<ContactDTO> updateNota(@RequestBody ContactDTO dto){
         ResponseEntity<ContactDTO> responseEntity = null;

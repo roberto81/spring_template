@@ -62,7 +62,7 @@ public class ContactService {
 
     public ContactDTO updateContact( ContactDTO dto){
 
-        Contact entity = new Contact();
+        Contact entity = contactRepository.findOne(dto.getId());
         entity.setEmail(dto.getEmail());
         entity.setPrimaryPhoneNumber( dto.getPrimaryPhoneNumber() );
         entity.setSecondarySecondaryNumber( dto.getSecondarySecondaryNumber() );
@@ -85,10 +85,7 @@ public class ContactService {
     }
 
     public void deleteContact(ContactDTO dto){
-        Contact entity = new Contact();
-        entity.setEmail(dto.getEmail());
-        entity.setPrimaryPhoneNumber( dto.getPrimaryPhoneNumber() );
-        entity.setSecondarySecondaryNumber( dto.getSecondarySecondaryNumber() );
+        Contact entity = contactRepository.findOne(dto.getId());
 
         try {
             contactRepository.delete(entity);
