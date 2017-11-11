@@ -25,3 +25,6 @@ nbdist/
 
 ### Os x ###
 **/.DS_Store
+
+### Exclude file and folder project ###
+target/
