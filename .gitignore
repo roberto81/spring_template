@@ -28,4 +28,3 @@ nbdist/
 
 ### Exclude file and folder project ###
 target/
-application.properties
