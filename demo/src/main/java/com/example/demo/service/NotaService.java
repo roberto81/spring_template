@@ -94,4 +94,11 @@ public class NotaService {
         notaRepository.delete(id);
     }
 
+    public NotaRepository getNotaRepository() {
+        return notaRepository;
+    }
+
+    public void setNotaRepository(NotaRepository notaRepository) {
+        this.notaRepository = notaRepository;
+    }
 }

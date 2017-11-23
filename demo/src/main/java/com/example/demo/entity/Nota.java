@@ -3,6 +3,7 @@ package com.example.demo.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 
