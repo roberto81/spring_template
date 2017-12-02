@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
+/*
+    questa interfaccia realizza le operazioni CRUD per l'entitò Contact.
+ */
 public interface ContactRepository extends JpaRepository<Contact,Integer> {
     @Override
     List<Contact> findAll();

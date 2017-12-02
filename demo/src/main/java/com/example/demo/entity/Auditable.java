@@ -14,7 +14,15 @@ import java.util.Date;
 
 import static javax.persistence.TemporalType.TIMESTAMP;
 
+/*
+    Annotando la classe con @MappedSuperclass si informa l'ORM che questa classe non
+    è un'entità ma i suoi campi faranno parte dell'entità che estende la classe annotata
+ */
 @MappedSuperclass
+/*
+    L'annotazione permette di definire un listner a livello di Entità in modo che ogni
+    operazione catturata dal listner esegua un flusso di operazioni di callback.
+ */
 @EntityListeners(AuditingEntityListener.class)
 public class Auditable<U> {
 

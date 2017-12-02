@@ -24,7 +24,6 @@ import java.util.List;
 public class Person {
 
     @Id
-    //@GeneratedValue(generator = "PERSON_SEQ")
     @GeneratedValue(generator = "personSequenceGenerator")
     private Integer id;
 

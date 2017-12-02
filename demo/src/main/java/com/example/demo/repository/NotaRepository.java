@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
+/*
+    questa interfaccia realizza le operazioni CRUD per l'entitò Nota.
+ */
 public interface NotaRepository extends JpaRepository<Nota,Integer> {
     @Override
     List<Nota> findAll();

@@ -5,8 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-/**
- * Created by ropal on 18/10/2017.
+
+/*
+    questa interfaccia realizza le operazioni CRUD per l'entitò Person.
  */
 public interface Personrepository extends JpaRepository<Person,Integer> {
 
