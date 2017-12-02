@@ -12,7 +12,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "PERSON")
-//@SequenceGenerator(name = "PERSON_SEQ", sequenceName = "PERSON_SEQ", initialValue = 1 )
 @GenericGenerator(
         name = "personSequenceGenerator",
         strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
