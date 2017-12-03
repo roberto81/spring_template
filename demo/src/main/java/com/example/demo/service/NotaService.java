@@ -6,6 +6,7 @@ import com.example.demo.repository.NotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,8 +47,12 @@ public class NotaService {
         return dtoresult;
     }
 
-    public NotaDTO findOneNota( Integer id ){
+    public NotaDTO findOneNota( Integer id ) throws EntityNotFoundException{
         Nota entity = notaRepository.findOne(id);
+
+        if (null == entity){
+            throw new EntityNotFoundException("La nota con id: " + id + " non presente");
+        }
 
         NotaDTO dtoresult = new NotaDTO();
         dtoresult.setId( entity.getId() );

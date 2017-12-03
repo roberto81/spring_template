@@ -6,6 +6,7 @@ import com.example.demo.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,8 +49,12 @@ public class ContactService {
         return dtoresult;
     }
 
-    public ContactDTO findOneContact( Integer id ){
+    public ContactDTO findOneContact( Integer id ) throws EntityNotFoundException{
         Contact entity = contactRepository.findOne(id);
+
+        if(null == entity){
+            throw new EntityNotFoundException("Il contatto con id: " + id +" non è presente");
+        }
 
         ContactDTO dtoresult = new ContactDTO();
         dtoresult.setId( entity.getId() );

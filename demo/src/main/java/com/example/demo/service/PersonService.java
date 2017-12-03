@@ -10,6 +10,7 @@ import com.example.demo.repository.Personrepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,9 +67,13 @@ public class PersonService {
         return responseList;
 
     }
-    public PersonDTO findOnePerson( Integer id ){
+    public PersonDTO findOnePerson( Integer id ) throws EntityNotFoundException{
         Person entity = new Person();
         entity = personRepository.findOne( id );
+
+        if (null == entity){
+            throw new EntityNotFoundException("La persona cond id: " + id + " non è presente");
+        }
 
         PersonDTO dtoresult = new PersonDTO();
         dtoresult.setFirstName(entity.getFirstName());

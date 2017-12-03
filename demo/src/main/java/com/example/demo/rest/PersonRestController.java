@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 
@@ -38,7 +39,7 @@ public class PersonRestController {
 
     @RequestMapping(value = "rest/findPersonById", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
-    public ResponseEntity<PersonDTO> findOnePerson(@RequestParam("id") Integer id) {
+    public ResponseEntity<PersonDTO> findOnePerson(@RequestParam("id") Integer id) throws EntityNotFoundException{
 
         ResponseEntity<PersonDTO> responseEntity = null;
 
@@ -46,6 +47,7 @@ public class PersonRestController {
             responseEntity = new ResponseEntity<PersonDTO>(personService.findOnePerson(id), HttpStatus.CREATED);
         } catch (Exception e) {
             e.printStackTrace();
+            throw e;
         }
         return responseEntity;
 
